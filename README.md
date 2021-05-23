@@ -7,4 +7,4 @@ A simple get_next_line tester.
 ./tester.sh
 ```
 
-![An example of an ouput.](/img/example.png)
+![An example of an ouput.](/img/img.png)

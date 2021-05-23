@@ -2,6 +2,7 @@
 
 sep="======================================================================"
 alt="----------------------------------------------------------------------"
+FILES="../get_next_line.h ../get_next_line.c ../get_next_line_utils.c"
 
 test()
 {
@@ -103,6 +104,25 @@ echo "██║  ███╗██╔██╗ ██║██║         █�
 echo "██║   ██║██║╚██╗██║██║         ██║╚██╔╝██║██╔══╝  ██║  ██║██║██║     "
 echo "╚██████╔╝██║ ╚████║███████╗    ██║ ╚═╝ ██║███████╗██████╔╝██║╚██████╗"
 echo " ╚═════╝ ╚═╝  ╚═══╝╚══════╝    ╚═╝     ╚═╝╚══════╝╚═════╝ ╚═╝ ╚═════╝"
+
+printf "\n$sep\n"
+printf "\nForbidden functions:\n\n\033[38;2;222;56;43m"
+FUN=("[^_]printf(" "[^_]memset(" "[^_]bzero(" "[^_]memcpy(" "[^_]memccpy(" "[^_]memmove(" "[^_]memchr(" "[^_]memcmp(" "[^_]strlen(" "[^_]isspace(" "[^_]isupper(" "[^_]islower(" "[^_]isalpha(" "[^_]isdigit(" "[^_]isalnum(" "[^_]isascii(" "[^_]isprint(" "[^_]toupper(" "[^_]tolower(" "[^_]strchr(" "[^_]strrchr(" "[^_]strcmp(" "[^_]strncmp(" "[^_]strcpy(" "[^_]strncpy(" "[^_]strlcpy(" "[^_]strcat(" "[^_]strncat(" "[^_]strlcat(" "[^_]strstr(" "[^_]strnstr(" "[^_]atoi(" "[^_]atol(" "[^_]itoa(" "[^_]calloc(" "[^_]realloc(" "[^_]strdup(")
+K=0
+for element in ${FUN[@]}; do
+	grep element $FILES
+	if [ $? -eq 0 ]; then
+		((K++))
+	fi
+done
+if [ $K -eq 0 ]; then
+	printf "\033[38;2;57;181;74mCheat free.\n"
+fi
+printf "\033[38;2;255;176;0m\n$sep\n\nNorm test:\n\n\033[0;38;2;57;181;74m"
+norminette libft.h $FILES | grep "OK"
+printf "\n\033[0;38;2;222;56;43m"
+norminette libft.h $FILES | grep "Error"
+printf "\n\033[0m"
 
 printf "\033[0;38;2;255;176;0m\n$sep\n\033[0m"
 printf "\033[38;2;255;176;0mCompilation with BUFFER_SIZE=1...\n\033[0m"

@@ -96,6 +96,11 @@ test()
 	cat test/no_line | $EXEC
 }
 
+if [ ! -f "../get_next_line.h" ] || [ ! -f "../get_next_line.c" ] || [ ! -f "../get_next_line_utils.c" ]; then
+	printf "error: file is missing!\n"
+	exit 0
+fi
+
 printf "\033[38;2;255;176;0m\n$sep\n\n"
 
 echo " ██████╗ ███╗   ██╗██╗         ███╗   ███╗███████╗██████╗ ██╗ ██████╗"

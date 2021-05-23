@@ -106,17 +106,17 @@ echo " ╚═════╝ ╚═╝  ╚═══╝╚══════╝ 
 
 printf "\033[0;38;2;255;176;0m\n$sep\n\033[0m"
 printf "\033[38;2;255;176;0mCompilation with BUFFER_SIZE=1...\n\033[0m"
-gcc -Wall -Wextra -Werror -D BUFFER_SIZE=1 main_mandatory.c ../get_next_line.c ../get_next_line_utils.c
+gcc -Wall -Wextra -Werror -fsanitize=address -D BUFFER_SIZE=1 main_mandatory.c ../get_next_line.c ../get_next_line_utils.c
 test ./a.out
 
 printf "\033[38;2;255;176;0m\n$sep\n\033[0m"
 printf "\033[38;2;255;176;0mCompilation with BUFFER_SIZE=8...\n\033[0m"
-gcc -Wall -Wextra -Werror -D BUFFER_SIZE=8 main_mandatory.c ../get_next_line.c ../get_next_line_utils.c
+gcc -Wall -Wextra -Werror -fsanitize=address -D BUFFER_SIZE=8 main_mandatory.c ../get_next_line.c ../get_next_line_utils.c
 test ./a.out
 
 printf "\033[38;2;255;176;0m\n$sep\n\033[0m"
 printf "\033[38;2;255;176;0mCompilation with BUFFER_SIZE=9999...\n\033[0m"
-gcc -Wall -Wextra -Werror -D BUFFER_SIZE=9999 main_mandatory.c ../get_next_line.c ../get_next_line_utils.c
+gcc -Wall -Wextra -Werror -fsanitize=address -D BUFFER_SIZE=9999 main_mandatory.c ../get_next_line.c ../get_next_line_utils.c
 test ./a.out
 
 printf "\033[38;2;255;176;0m\n%70s\n%70s\n%70s\033[0m\n" "Test finished." "@2021, 42 GNL Tester." "https://github.com/gmarcha"
